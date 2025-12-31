@@ -85,5 +85,7 @@ def predict_email(text, vectorizer, model):
     prediction = model.predict(features)[0]
     return label_map[prediction]
 
+# ===============================
 # Test prediction
+# ===============================
 print(predict_email("Yeah he got in at 2 and was v apologetic. n had fallen out and she was actin like spoilt child and he got caught up in that. Till 2! But we won't go there! Not doing too badly cheers. You?",feature_extraction,model))
