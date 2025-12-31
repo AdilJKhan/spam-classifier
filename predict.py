@@ -1,18 +1,24 @@
 import os
 import pickle
 
-# Load saved model and vectorizer
+# ==================================================
+# Load the saved TF-IDF vectorizer and trained model
+# ==================================================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "spam_classifier.pkl")
 
-with open("spam-classifier/spam_classifier.pkl", "rb") as file:
+with open(MODEL_PATH, "rb") as file:
     feature_extraction, model = pickle.load(file)
 
+# Map numeric model outputs to human-readable labels
 label_map = {
     0: "Spam mail",
     1: "Ham mail"
 }
 
+# ===============================
+# Prediction function
+# ===============================
 def predict_email(text):
     features = feature_extraction.transform([text])
     prediction = model.predict(features)[0]
